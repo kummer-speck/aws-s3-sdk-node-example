@@ -4,14 +4,15 @@ import { s3Client } from "./client.js";
 
 // Set the parameters
 const params = {
-  Bucket: "<BUCKET_NAME>", // The name of the bucket. For example, 'sample_bucket_101'.
-  Key: "<FILENAME>", // The name of the object. For example, 'sample_upload.txt'.
-  Body: "<BODY_CONTENT>", // The content of the object. For example, 'Hello world!".
+  Bucket: "chrissy-bucket-aws-sdk-lesson-3", // The name of the bucket. For example, 'sample_bucket_101'.
+  Key: "test2.txt", // The name of the object. For example, 'sample_upload.txt'.
+  Body: "This is still a test.", // The content of the object. For example, 'Hello world!".
+  ACL : 'public-read'
 };
 
 const run = () => {
   s3Client
-    .send(new CreateBucketCommand({ Bucket: params.Bucket }))
+    .send(new CreateBucketCommand({ Bucket: params.Bucket}))
     .then((data) => {
       console.log("Successfully created a bucket called ", data.Location);
     })
